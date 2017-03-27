@@ -58,14 +58,7 @@
 		95FB3E171E8977DA00FBF425 /* GiphyViewer */ = {
 			isa = PBXGroup;
 			children = (
-				95FB3E1B1E8977DA00FBF425 /* AppDelegate.h */,
-				95FB3E1C1E8977DA00FBF425 /* AppDelegate.m */,
-				95FB3E1E1E8977DA00FBF425 /* ViewController.h */,
-				95FB3E1F1E8977DA00FBF425 /* ViewController.m */,
 				95FB3E211E8977DA00FBF425 /* Main.storyboard */,
-				95FB3E241E8977DA00FBF425 /* Assets.xcassets */,
-				95FB3E261E8977DA00FBF425 /* LaunchScreen.storyboard */,
-				95FB3E291E8977DA00FBF425 /* Info.plist */,
 				95FB3E181E8977DA00FBF425 /* Supporting Files */,
 			);
 			path = GiphyViewer;
@@ -74,6 +67,13 @@
 		95FB3E181E8977DA00FBF425 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				95FB3E1B1E8977DA00FBF425 /* AppDelegate.h */,
+				95FB3E1C1E8977DA00FBF425 /* AppDelegate.m */,
+				95FB3E1E1E8977DA00FBF425 /* ViewController.h */,
+				95FB3E1F1E8977DA00FBF425 /* ViewController.m */,
+				95FB3E241E8977DA00FBF425 /* Assets.xcassets */,
+				95FB3E261E8977DA00FBF425 /* LaunchScreen.storyboard */,
+				95FB3E291E8977DA00FBF425 /* Info.plist */,
 				95FB3E191E8977DA00FBF425 /* main.m */,
 			);
 			name = "Supporting Files";
