@@ -25,11 +25,11 @@
             </objects>
             <point key="canvasLocation" x="-408" y="88"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Trending Gifs View Controller-->
         <scene sceneID="b3k-0R-XBR">
             <objects>
-                <collectionViewController id="u8C-AS-tFf" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="smm-kM-2u3">
+                <collectionViewController id="u8C-AS-tFf" customClass="TrendingGifsViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="smm-kM-2u3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,7 +40,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Gsn-cw-d6K">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="Gsn-cw-d6K">
                                 <rect key="frame" x="0.0" y="50" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -56,11 +56,11 @@
                                 <size key="customSize" width="150" height="150"/>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NF2-km-CIf">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewHeader" id="NF2-km-CIf">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wdb-F3-OC7">
+                                <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Wdb-F3-OC7">
                                     <rect key="frame" x="0.0" y="3" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -81,11 +81,11 @@
             </objects>
             <point key="canvasLocation" x="321" y="88"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Search Gifs View Controller-->
         <scene sceneID="L5g-d4-dka">
             <objects>
-                <collectionViewController id="oSt-8G-zIj" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="065-6l-Oyi">
+                <collectionViewController id="oSt-8G-zIj" customClass="SearchGifsViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="065-6l-Oyi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="1050" y="87.676056338028175"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="1Qh-Le-ZNm">
             <objects>
-                <viewController id="ouK-kA-Cb9" sceneMemberID="viewController">
+                <viewController id="ouK-kA-Cb9" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mWc-hU-jWg"/>
                         <viewControllerLayoutGuide type="bottom" id="rlw-Qt-33a"/>

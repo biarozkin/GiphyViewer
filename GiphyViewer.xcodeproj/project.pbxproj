@@ -13,6 +13,9 @@
 		95FB3E231E8977DA00FBF425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FB3E211E8977DA00FBF425 /* Main.storyboard */; };
 		95FB3E251E8977DA00FBF425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FB3E241E8977DA00FBF425 /* Assets.xcassets */; };
 		95FB3E281E8977DA00FBF425 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FB3E261E8977DA00FBF425 /* LaunchScreen.storyboard */; };
+		95FB3E351E89807A00FBF425 /* TrendingGifsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E341E89807A00FBF425 /* TrendingGifsViewController.m */; };
+		95FB3E381E8980A900FBF425 /* SearchGifsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E371E8980A900FBF425 /* SearchGifsViewController.m */; };
+		95FB3E3B1E8980DB00FBF425 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E3A1E8980DB00FBF425 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		95FB3E241E8977DA00FBF425 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95FB3E271E8977DA00FBF425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95FB3E291E8977DA00FBF425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95FB3E331E89807A00FBF425 /* TrendingGifsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingGifsViewController.h; sourceTree = "<group>"; };
+		95FB3E341E89807A00FBF425 /* TrendingGifsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingGifsViewController.m; sourceTree = "<group>"; };
+		95FB3E361E8980A900FBF425 /* SearchGifsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchGifsViewController.h; sourceTree = "<group>"; };
+		95FB3E371E8980A900FBF425 /* SearchGifsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchGifsViewController.m; sourceTree = "<group>"; };
+		95FB3E391E8980DB00FBF425 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		95FB3E3A1E8980DB00FBF425 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +67,8 @@
 		95FB3E171E8977DA00FBF425 /* GiphyViewer */ = {
 			isa = PBXGroup;
 			children = (
-				95FB3E211E8977DA00FBF425 /* Main.storyboard */,
+				95FB3E3C1E89814B00FBF425 /* View */,
+				95FB3E321E897FBF00FBF425 /* Controller */,
 				95FB3E181E8977DA00FBF425 /* Supporting Files */,
 			);
 			path = GiphyViewer;
@@ -77,6 +87,27 @@
 				95FB3E191E8977DA00FBF425 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95FB3E321E897FBF00FBF425 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95FB3E331E89807A00FBF425 /* TrendingGifsViewController.h */,
+				95FB3E341E89807A00FBF425 /* TrendingGifsViewController.m */,
+				95FB3E361E8980A900FBF425 /* SearchGifsViewController.h */,
+				95FB3E371E8980A900FBF425 /* SearchGifsViewController.m */,
+				95FB3E391E8980DB00FBF425 /* SettingsViewController.h */,
+				95FB3E3A1E8980DB00FBF425 /* SettingsViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		95FB3E3C1E89814B00FBF425 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95FB3E211E8977DA00FBF425 /* Main.storyboard */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +183,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				95FB3E201E8977DA00FBF425 /* ViewController.m in Sources */,
+				95FB3E381E8980A900FBF425 /* SearchGifsViewController.m in Sources */,
 				95FB3E1D1E8977DA00FBF425 /* AppDelegate.m in Sources */,
+				95FB3E3B1E8980DB00FBF425 /* SettingsViewController.m in Sources */,
+				95FB3E351E89807A00FBF425 /* TrendingGifsViewController.m in Sources */,
 				95FB3E1A1E8977DA00FBF425 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
