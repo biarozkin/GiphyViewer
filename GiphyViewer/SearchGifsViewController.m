@@ -22,25 +22,25 @@
 //    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     
-    UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Settings"
-                                   style:UIBarButtonItemStylePlain
-                                   target:self
-                                   action:@selector(settingsButtonPressed)];
-    self.navigationItem.rightBarButtonItem = flipButton;
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc]
+                                       initWithTitle:@"Settings"
+                                       style:UIBarButtonItemStylePlain
+                                       target:self
+                                       action:@selector(settingsButtonPressed)];
+    self.navigationItem.rightBarButtonItem = settingsButton;
     
     
 }
 
 #pragma mark - Actions
 
-#warning - still working on!
 -(void)settingsButtonPressed {
     
     SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SettingsViewController class])];
     
     //to make present-style view controller appearance (and not push-style)
-    [self.navigationController pushViewController:vc animated:YES];
+    //[self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
     
 }
 

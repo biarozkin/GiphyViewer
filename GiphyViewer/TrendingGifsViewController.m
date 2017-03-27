@@ -11,38 +11,25 @@
 #import "SearchCollectionReusableView.h"
 
 @interface TrendingGifsViewController ()
-
+@property (strong,nonatomic) NSMutableArray *gifsArray;
 @end
 
 @implementation TrendingGifsViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    // Register cell classes
-//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    
-    
+    self.gifsArray = [NSMutableArray array];
+    [self getTrendingGIFS];
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - API
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void) getTrendingGIFS {
+    
+    
 }
-*/
 
 #pragma mark - UICollectionViewDataSource
 

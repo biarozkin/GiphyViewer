@@ -17,6 +17,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
+                                       initWithTitle:@"Save"
+                                       style:UIBarButtonItemStylePlain
+                                       target:self
+                                       action:@selector(saveButtonPressed)];
+    self.navigationItem.rightBarButtonItem = saveButton;
+    
+    
+}
+
+#pragma mark - Actions
+
+#warning (undone) - make SaveButton work
+-(void)saveButtonPressed {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
