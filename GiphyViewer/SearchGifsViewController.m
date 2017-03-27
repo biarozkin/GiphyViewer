@@ -7,6 +7,7 @@
 //
 
 #import "SearchGifsViewController.h"
+#import "SettingsViewController.h"
 
 @interface SearchGifsViewController ()
 
@@ -14,23 +15,33 @@
 
 @implementation SearchGifsViewController
 
-static NSString * const reuseIdentifier = @"Cell";
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
+//    // Register cell classes
+//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-    // Do any additional setup after loading the view.
+    UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Settings"
+                                   style:UIBarButtonItemStylePlain
+                                   target:self
+                                   action:@selector(settingsButtonPressed)];
+    self.navigationItem.rightBarButtonItem = flipButton;
+    
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Actions
+
+#warning - still working on!
+-(void)settingsButtonPressed {
+    
+    SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SettingsViewController class])];
+    
+    //to make present-style view controller appearance (and not push-style)
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 /*
@@ -43,28 +54,39 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 */
 
-#pragma mark <UICollectionViewDataSource>
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
+#pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+
+    return 10;
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString * const reuseIdentifier = @"CollectionViewCell2"; //is there a sence to have not the @"CollectionViewCell" (without 2)-identifier?
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
+    cell.backgroundColor = [UIColor greenColor];
     
     return cell;
 }
 
-#pragma mark <UICollectionViewDelegate>
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return CGSizeMake(150, 150);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    return UIEdgeInsetsMake(5, 5, 5, 5);
+}
+
+
+//#pragma mark <UICollectionViewDelegate>
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking

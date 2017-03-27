@@ -1,5 +1,5 @@
 //
-//  TrendingGifsViewController.h
+//  SearchCollectionReusableView.h
 //  GiphyViewer
 //
 //  Created by Igor Biarozkin on 27.03.17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrendingGifsViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, UISearchBarDelegate>
+@interface SearchCollectionReusableView : UICollectionReusableView
 
 @end

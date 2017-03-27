@@ -7,6 +7,8 @@
 //
 
 #import "TrendingGifsViewController.h"
+#import "SearchGifsViewController.h"
+#import "SearchCollectionReusableView.h"
 
 @interface TrendingGifsViewController ()
 
@@ -21,8 +23,6 @@
     
 //    // Register cell classes
 //    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
     
     
     
@@ -56,7 +56,6 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor redColor];
-    // Configure the cell
     
     return cell;
 }
@@ -76,11 +75,14 @@
 
 #pragma mark - UISearchBarDelegate
 
+#warning (undone) - to sent keyWord to SearchGifsViewController
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
  
-    //Task to complete:
-    //go to SearchGifsViewController with the result typed in searchBar
-    //and show GIFs with the specified tematics
+    SearchGifsViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SearchGifsViewController class])];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
     
 }
 

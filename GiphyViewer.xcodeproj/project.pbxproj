@@ -16,6 +16,7 @@
 		95FB3E351E89807A00FBF425 /* TrendingGifsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E341E89807A00FBF425 /* TrendingGifsViewController.m */; };
 		95FB3E381E8980A900FBF425 /* SearchGifsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E371E8980A900FBF425 /* SearchGifsViewController.m */; };
 		95FB3E3B1E8980DB00FBF425 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E3A1E8980DB00FBF425 /* SettingsViewController.m */; };
+		95FB3E3F1E898A8F00FBF425 /* SearchCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E3E1E898A8F00FBF425 /* SearchCollectionReusableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		95FB3E371E8980A900FBF425 /* SearchGifsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchGifsViewController.m; sourceTree = "<group>"; };
 		95FB3E391E8980DB00FBF425 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		95FB3E3A1E8980DB00FBF425 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		95FB3E3D1E898A8F00FBF425 /* SearchCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCollectionReusableView.h; sourceTree = "<group>"; };
+		95FB3E3E1E898A8F00FBF425 /* SearchCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCollectionReusableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				95FB3E211E8977DA00FBF425 /* Main.storyboard */,
+				95FB3E3D1E898A8F00FBF425 /* SearchCollectionReusableView.h */,
+				95FB3E3E1E898A8F00FBF425 /* SearchCollectionReusableView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				95FB3E1D1E8977DA00FBF425 /* AppDelegate.m in Sources */,
 				95FB3E3B1E8980DB00FBF425 /* SettingsViewController.m in Sources */,
 				95FB3E351E89807A00FBF425 /* TrendingGifsViewController.m in Sources */,
+				95FB3E3F1E898A8F00FBF425 /* SearchCollectionReusableView.m in Sources */,
 				95FB3E1A1E8977DA00FBF425 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +350,7 @@
 				95FB3E2E1E8977DA00FBF425 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
