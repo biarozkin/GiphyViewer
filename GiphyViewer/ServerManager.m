@@ -84,5 +84,49 @@ static NSString * const publicAPIKey = @"dc6zaTOxFJmzC";
 }
 
 
+-(void) requestGifsWithPhrase:(NSString*)phrase
+                    andRating:(NSString*)rating
+                    inCountOf:(NSInteger) count
+                  withSuccess:(void(^)(NSArray *gifs)) success
+                    orFailure:(void(^)(NSError *error, NSInteger statusCode)) failure {
+    
+    //http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC
+    //    q - search query term or phrase
+    //    limit - (optional) number of results to return, maximum 100. Default 25.
+    //    rating - (optional) limit results to those rated (y,g, pg, pg-13 or r).
+    
+    NSDictionary *prms = [NSDictionary dictionaryWithObjectsAndKeys:
+                          @"dc6zaTOxFJmzC", @"api_key",
+                          @(count),         @"limit",
+                          phrase,           @"q",
+                          //@(rating),  @"rating",
+                          nil];
+    
+    [self.sessionManager GET:@"search"
+                  parameters:prms
+                    progress:^(NSProgress * _Nonnull downloadProgress) {
+                        
+                    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        //NSLog(@"JSON: %@", responseObject);
+                        NSArray *dictsArray = [responseObject objectForKey:@"data"];
+                        NSMutableArray *objectsArray = [NSMutableArray array];
+                        for (NSDictionary *dict in dictsArray) {
+                            GifModel *gifObject = [[GifModel alloc]initWithServerResponse:dict];
+                            [objectsArray addObject:gifObject];
+                        }
+                        
+                        if (success) {
+                            success(objectsArray);
+                        }
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        
+                                                NSLog(@"Error: %@", error);
+                        
+                        //                        if (failure) {
+                        //                            failure(error, [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode]);
+                        //                        }
+                    }];
+}
+
 
 @end

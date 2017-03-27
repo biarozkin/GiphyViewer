@@ -16,4 +16,10 @@
                       withSuccess:(void(^)(NSArray *gifs)) success
                         orFailure:(void(^)(NSError *error, NSInteger statusCode)) failure;
 
+-(void) requestGifsWithPhrase:(NSString*)phrase
+                    andRating:(NSString*)rating
+                    inCountOf:(NSInteger) count
+                  withSuccess:(void(^)(NSArray *gifs)) success
+                    orFailure:(void(^)(NSError *error, NSInteger statusCode)) failure;
+
 @end

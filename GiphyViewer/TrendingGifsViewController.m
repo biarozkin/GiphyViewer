@@ -9,6 +9,8 @@
 #import "TrendingGifsViewController.h"
 #import "SearchGifsViewController.h"
 #import "SearchCollectionReusableView.h"
+#import "ServerManager.h"
+#import "GifCell.h"
 
 @interface TrendingGifsViewController ()
 @property (strong,nonatomic) NSMutableArray *gifsArray;
@@ -28,21 +30,31 @@
 
 -(void) getTrendingGIFS {
     
-    
+    [[ServerManager sharedManager]requestTrendGifsInCountOf:20 withSuccess:^(NSArray *gifs) {
+        
+        [self.gifsArray addObjectsFromArray:gifs];
+        [self.collectionView reloadData];
+        
+    } orFailure:^(NSError *error, NSInteger statusCode) {
+        
+#warning - rewrite message log
+        NSLog(@"SMTH HAPPENED WHILE retrieveing from server");
+        
+    }];
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 10;
+    return [self.gifsArray count];
     
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+        
+    GifCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
+    cell.gif = [self.gifsArray objectAtIndex:indexPath.row];
     
     return cell;
 }

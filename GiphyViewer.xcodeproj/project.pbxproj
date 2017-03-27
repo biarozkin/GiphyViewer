@@ -19,6 +19,7 @@
 		95FB3E3F1E898A8F00FBF425 /* SearchCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E3E1E898A8F00FBF425 /* SearchCollectionReusableView.m */; };
 		95FB3E461E8990E200FBF425 /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E451E8990E200FBF425 /* ServerManager.m */; };
 		95FB3E4C1E89967D00FBF425 /* GifModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E4B1E89967D00FBF425 /* GifModel.m */; };
+		95FB3E4F1E89993700FBF425 /* GifCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E4E1E89993700FBF425 /* GifCell.m */; };
 		CE6B57044F80B4FC253E7C51 /* libPods-GiphyViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E29789BA68BAC33FAE0BB578 /* libPods-GiphyViewer.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,8 @@
 		95FB3E451E8990E200FBF425 /* ServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerManager.m; sourceTree = "<group>"; };
 		95FB3E4A1E89967D00FBF425 /* GifModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifModel.h; sourceTree = "<group>"; };
 		95FB3E4B1E89967D00FBF425 /* GifModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifModel.m; sourceTree = "<group>"; };
+		95FB3E4D1E89993700FBF425 /* GifCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifCell.h; sourceTree = "<group>"; };
+		95FB3E4E1E89993700FBF425 /* GifCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifCell.m; sourceTree = "<group>"; };
 		CB5F811E90F97E3A1FDF855C /* Pods-GiphyViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphyViewer.release.xcconfig"; path = "Pods/Target Support Files/Pods-GiphyViewer/Pods-GiphyViewer.release.xcconfig"; sourceTree = "<group>"; };
 		E29789BA68BAC33FAE0BB578 /* libPods-GiphyViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GiphyViewer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,8 +86,8 @@
 		95FB3E171E8977DA00FBF425 /* GiphyViewer */ = {
 			isa = PBXGroup;
 			children = (
-				95FB3E401E898FD700FBF425 /* Model */,
 				95FB3E3C1E89814B00FBF425 /* View */,
+				95FB3E401E898FD700FBF425 /* Model */,
 				95FB3E321E897FBF00FBF425 /* Controller */,
 				95FB3E181E8977DA00FBF425 /* Supporting Files */,
 			);
@@ -123,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				95FB3E211E8977DA00FBF425 /* Main.storyboard */,
+				95FB3E4D1E89993700FBF425 /* GifCell.h */,
+				95FB3E4E1E89993700FBF425 /* GifCell.m */,
 				95FB3E3D1E898A8F00FBF425 /* SearchCollectionReusableView.h */,
 				95FB3E3E1E898A8F00FBF425 /* SearchCollectionReusableView.m */,
 			);
@@ -282,6 +287,7 @@
 			files = (
 				95FB3E201E8977DA00FBF425 /* ViewController.m in Sources */,
 				95FB3E381E8980A900FBF425 /* SearchGifsViewController.m in Sources */,
+				95FB3E4F1E89993700FBF425 /* GifCell.m in Sources */,
 				95FB3E1D1E8977DA00FBF425 /* AppDelegate.m in Sources */,
 				95FB3E3B1E8980DB00FBF425 /* SettingsViewController.m in Sources */,
 				95FB3E461E8990E200FBF425 /* ServerManager.m in Sources */,

@@ -8,9 +8,11 @@
 
 #import "SearchGifsViewController.h"
 #import "SettingsViewController.h"
+#import "ServerManager.h"
+#import "GifCell.h"
 
 @interface SearchGifsViewController ()
-
+@property (strong,nonatomic) NSMutableArray *searchGifsArray;
 @end
 
 @implementation SearchGifsViewController
@@ -18,9 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    // Register cell classes
-//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
+    self.searchGifsArray = [[NSMutableArray alloc]init];
+    [self searchGifs];
     
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc]
                                        initWithTitle:@"Settings"
@@ -29,7 +30,6 @@
                                        action:@selector(settingsButtonPressed)];
     self.navigationItem.rightBarButtonItem = settingsButton;
     
-    
 }
 
 #pragma mark - Actions
@@ -37,37 +37,47 @@
 -(void)settingsButtonPressed {
     
     SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SettingsViewController class])];
-    
-    //to make present-style view controller appearance (and not push-style)
-    //[self.navigationController pushViewController:vc animated:YES];
     [self.navigationController presentViewController:vc animated:YES completion:nil];
     
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - API
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)searchGifs {
+    
+    [[ServerManager sharedManager]requestGifsWithPhrase:@"cat"
+                                              andRating:nil
+                                              inCountOf:20
+                                            withSuccess:^(NSArray *gifs) {
+                                                
+                                                [self.searchGifsArray addObjectsFromArray:gifs];
+                                                [self.collectionView reloadData];
+
+                                            } orFailure:^(NSError *error, NSInteger statusCode) {
+                                                  
+#warning - rewrite message log
+                                                  NSLog(@"SMTH HAPPENED WHILE retrieveing from server");
+                                                  
+                                            }];
+    
 }
-*/
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return 10;
+    return [self.searchGifsArray count];
     
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+#warning - check with CollectionViewCell identifier
+    GifCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell2" forIndexPath:indexPath];
+    cell.gif = [self.searchGifsArray objectAtIndex:indexPath.row];
     
-    static NSString * const reuseIdentifier = @"CollectionViewCell2"; //is there a sence to have not the @"CollectionViewCell" (without 2)-identifier?
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor greenColor];
+//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell2" forIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor redColor];
     
     return cell;
 }
