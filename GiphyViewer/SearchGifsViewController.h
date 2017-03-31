@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingsViewController.h"
 
-@interface SearchGifsViewController : UICollectionViewController
-
+@interface SearchGifsViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@property (nonatomic, strong) NSString* searchTerm;
 @end

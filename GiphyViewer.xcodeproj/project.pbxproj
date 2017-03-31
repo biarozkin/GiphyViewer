@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95664B361E8C4D4000531BB6 /* NSUserDefaults+Defined.m in Sources */ = {isa = PBXBuildFile; fileRef = 95664B351E8C4D4000531BB6 /* NSUserDefaults+Defined.m */; };
 		95FB3E1A1E8977DA00FBF425 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E191E8977DA00FBF425 /* main.m */; };
 		95FB3E1D1E8977DA00FBF425 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E1C1E8977DA00FBF425 /* AppDelegate.m */; };
 		95FB3E201E8977DA00FBF425 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3E1F1E8977DA00FBF425 /* ViewController.m */; };
@@ -25,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		143C5785584021ECB2AF38FC /* Pods-GiphyViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphyViewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GiphyViewer/Pods-GiphyViewer.debug.xcconfig"; sourceTree = "<group>"; };
+		95664B341E8C4D4000531BB6 /* NSUserDefaults+Defined.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Defined.h"; sourceTree = "<group>"; };
+		95664B351E8C4D4000531BB6 /* NSUserDefaults+Defined.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Defined.m"; sourceTree = "<group>"; };
 		95FB3E151E8977DA00FBF425 /* GiphyViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiphyViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FB3E191E8977DA00FBF425 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95FB3E1B1E8977DA00FBF425 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 		95FB3E401E898FD700FBF425 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95664B341E8C4D4000531BB6 /* NSUserDefaults+Defined.h */,
+				95664B351E8C4D4000531BB6 /* NSUserDefaults+Defined.m */,
 				95FB3E4A1E89967D00FBF425 /* GifModel.h */,
 				95FB3E4B1E89967D00FBF425 /* GifModel.m */,
 				95FB3E441E8990E200FBF425 /* ServerManager.h */,
@@ -290,6 +295,7 @@
 				95FB3E4F1E89993700FBF425 /* GifCell.m in Sources */,
 				95FB3E1D1E8977DA00FBF425 /* AppDelegate.m in Sources */,
 				95FB3E3B1E8980DB00FBF425 /* SettingsViewController.m in Sources */,
+				95664B361E8C4D4000531BB6 /* NSUserDefaults+Defined.m in Sources */,
 				95FB3E461E8990E200FBF425 /* ServerManager.m in Sources */,
 				95FB3E351E89807A00FBF425 /* TrendingGifsViewController.m in Sources */,
 				95FB3E3F1E898A8F00FBF425 /* SearchCollectionReusableView.m in Sources */,

@@ -9,5 +9,4 @@
 #import "SearchCollectionReusableView.h"
 
 @implementation SearchCollectionReusableView
-
 @end

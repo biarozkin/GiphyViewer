@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UISegmentedControl *ratingControl;
+
+- (IBAction)doneButtonAction:(UIBarButtonItem *)sender;
 
 @end

@@ -12,5 +12,4 @@
 
 @property (strong, nonatomic) NSURL *url;
 -(id)initWithServerResponse:(NSDictionary*) responseObject;
-
 @end

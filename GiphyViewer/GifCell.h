@@ -13,8 +13,6 @@
 @interface GifCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet FLAnimatedImageView *imageView;
-
-#warning - question to ask
-@property (strong, nonatomic) GifModel* gif; //should I use weak instead?
+@property (strong, nonatomic) GifModel* gif;
 
 @end

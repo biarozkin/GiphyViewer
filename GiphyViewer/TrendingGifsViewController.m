@@ -12,8 +12,9 @@
 #import "ServerManager.h"
 #import "GifCell.h"
 
-@interface TrendingGifsViewController ()
+@interface TrendingGifsViewController () <UISearchBarDelegate>
 @property (strong,nonatomic) NSMutableArray *gifsArray;
+@property (strong,nonatomic) UISearchBar *searchBar;
 @end
 
 @implementation TrendingGifsViewController
@@ -24,6 +25,16 @@
     self.gifsArray = [NSMutableArray array];
     [self getTrendingGIFS];
     
+    //dismiss(?)
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    
+    [self.collectionView addGestureRecognizer:tap];
+    
+}
+
+-(void)dismissKeyboard {
+    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - API
@@ -37,8 +48,7 @@
         
     } orFailure:^(NSError *error, NSInteger statusCode) {
         
-#warning - rewrite message log
-        NSLog(@"SMTH HAPPENED WHILE retrieveing from server");
+        NSLog(@"error = %@, code = %ld", [error localizedDescription], statusCode);
         
     }];
 }
@@ -59,12 +69,13 @@
     return cell;
 }
 
-// The view that is returned must be retrieved from a call to -dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:
+
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         
-        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CollectionViewHeader" forIndexPath:indexPath];
+        SearchCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CollectionViewHeader" forIndexPath:indexPath];
+        self.searchBar = headerView.searchBar;
         
         return headerView;
     }
@@ -74,15 +85,13 @@
 
 #pragma mark - UISearchBarDelegate
 
-#warning (undone) - to sent keyWord to SearchGifsViewController
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
- 
-    SearchGifsViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SearchGifsViewController class])];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-    
-    
-    
+    if ([searchBar.text length] > 2 ) {
+        SearchGifsViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SearchGifsViewController class])];
+        vc.searchTerm = searchBar.text;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -96,37 +105,5 @@
     
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
-
-
-//#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

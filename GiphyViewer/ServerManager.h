@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSUserDefaults+Defined.h"
 
 @interface ServerManager : NSObject
 
@@ -17,7 +18,7 @@
                         orFailure:(void(^)(NSError *error, NSInteger statusCode)) failure;
 
 -(void) requestGifsWithPhrase:(NSString*)phrase
-                    andRating:(NSString*)rating
+                    andRating:(ParentControl)rating
                     inCountOf:(NSInteger) count
                   withSuccess:(void(^)(NSArray *gifs)) success
                     orFailure:(void(^)(NSError *error, NSInteger statusCode)) failure;

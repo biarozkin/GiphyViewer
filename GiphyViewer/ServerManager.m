@@ -14,10 +14,8 @@
 @property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
 @end
 
-
 @implementation ServerManager
 
-#warning - (later) set to use!
 static NSString * const publicAPIKey = @"dc6zaTOxFJmzC";
 
 + (ServerManager*) sharedManager {
@@ -53,7 +51,7 @@ static NSString * const publicAPIKey = @"dc6zaTOxFJmzC";
     //    fmt - (optional) return results in html or json format (useful for viewing responses as GIFs to debug/test)
     
     NSDictionary *prms = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"dc6zaTOxFJmzC", @"api_key",
+                          publicAPIKey,     @"api_key",
                           @(count),         @"limit",
                           nil];
     
@@ -75,17 +73,17 @@ static NSString * const publicAPIKey = @"dc6zaTOxFJmzC";
                         }
                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                         
-                        //                        NSLog(@"Error: %@", error);
+                        NSLog(@"Error: %@", error);
                         
-                        //                        if (failure) {
-                        //                            failure(error, [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode]);
-                        //                        }
+                        if (failure) {
+                            failure(error, [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode]);
+                        }
+                        
                     }];
 }
 
-
 -(void) requestGifsWithPhrase:(NSString*)phrase
-                    andRating:(NSString*)rating
+                    andRating:(ParentControl)rating
                     inCountOf:(NSInteger) count
                   withSuccess:(void(^)(NSArray *gifs)) success
                     orFailure:(void(^)(NSError *error, NSInteger statusCode)) failure {
@@ -96,10 +94,10 @@ static NSString * const publicAPIKey = @"dc6zaTOxFJmzC";
     //    rating - (optional) limit results to those rated (y,g, pg, pg-13 or r).
     
     NSDictionary *prms = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"dc6zaTOxFJmzC", @"api_key",
-                          @(count),         @"limit",
-                          phrase,           @"q",
-                          //@(rating),  @"rating",
+                          publicAPIKey,                     @"api_key",
+                          @(count),                         @"limit",
+                          phrase == nil ? @"" : phrase,     @"q",
+                          stringFromParentControl(rating),  @"rating",
                           nil];
     
     [self.sessionManager GET:@"search"
@@ -120,13 +118,13 @@ static NSString * const publicAPIKey = @"dc6zaTOxFJmzC";
                         }
                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                         
-                                                NSLog(@"Error: %@", error);
+                        NSLog(@"Error: %@", error);
                         
-                        //                        if (failure) {
-                        //                            failure(error, [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode]);
-                        //                        }
+                        if (failure) {
+                            failure(error, [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode]);
+                        }
+                        
                     }];
 }
-
 
 @end

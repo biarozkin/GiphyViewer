@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 #import "ServerManager.h"
 #import "GifCell.h"
+#import "NSUserDefaults+Defined.h"
 
 @interface SearchGifsViewController ()
 @property (strong,nonatomic) NSMutableArray *searchGifsArray;
@@ -21,14 +22,16 @@
     [super viewDidLoad];
     
     self.searchGifsArray = [[NSMutableArray alloc]init];
-    [self searchGifs];
     
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc]
-                                       initWithTitle:@"Settings"
-                                       style:UIBarButtonItemStylePlain
-                                       target:self
-                                       action:@selector(settingsButtonPressed)];
-    self.navigationItem.rightBarButtonItem = settingsButton;
+    self.navigationItem.title = self.searchTerm;
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self searchGifs];
     
 }
 
@@ -39,26 +42,50 @@
     SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SettingsViewController class])];
     [self.navigationController presentViewController:vc animated:YES completion:nil];
     
+//#warning - try to do that way - dispatch?
+//    self.searchGifsArray = nil;
+//    [self.collectionView reloadData];
+    
+    
 }
 
 #pragma mark - API
 
 -(void)searchGifs {
     
-    [[ServerManager sharedManager]requestGifsWithPhrase:@"cat"
-                                              andRating:nil
+    [[ServerManager sharedManager]requestGifsWithPhrase:self.searchTerm
+                                              andRating:[NSUserDefaults standardUserDefaults].parentControl
                                               inCountOf:20
                                             withSuccess:^(NSArray *gifs) {
                                                 
                                                 [self.searchGifsArray addObjectsFromArray:gifs];
+                                                
+                                                if ([self.searchGifsArray count] == 0) {
+                                                    [self noAnyResults];
+                                                }
+                                                
                                                 [self.collectionView reloadData];
 
                                             } orFailure:^(NSError *error, NSInteger statusCode) {
-                                                  
-#warning - rewrite message log
-                                                  NSLog(@"SMTH HAPPENED WHILE retrieveing from server");
+                                                
+                                                NSLog(@"error = %@, code = %ld", [error localizedDescription], statusCode);
                                                   
                                             }];
+    
+}
+
+-(void)noAnyResults {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                             message:@"No any GIFs were found"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK"
+                                                 style:UIAlertActionStyleDefault
+                                               handler:nil];
+    [alertController addAction:ok];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
     
 }
 
@@ -72,13 +99,10 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-#warning - check with CollectionViewCell identifier
-    GifCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell2" forIndexPath:indexPath];
+
+    GifCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SearchGifsViewControllerCell" forIndexPath:indexPath];
     cell.gif = [self.searchGifsArray objectAtIndex:indexPath.row];
-    
-//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell2" forIndexPath:indexPath];
-//    cell.backgroundColor = [UIColor redColor];
-    
+
     return cell;
 }
 
@@ -95,36 +119,5 @@
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
-
-//#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

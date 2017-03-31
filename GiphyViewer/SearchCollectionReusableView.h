@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchCollectionReusableView : UICollectionReusableView
-
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
